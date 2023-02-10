@@ -1,27 +1,18 @@
 
 const gridElement = document.querySelector('.grid')
+let playElement = document.querySelector('.play')
+const difficultyElement = document.getElementById('difficulty')
 let sidelength = 10
+console.log(difficultyElement.value)
 let cellTotal = sidelength ** 2
 let points = document.querySelector('.points')
+let pointText = document.querySelector('.point-text')
 let pointcounter = 0
 let gameOver = false
 let gameOverText = document.getElementById('game-over')
-
-// GENERAZIONE BOMBE
 let bombs = []
 
-while (bombs.length < 16) {
-    const bomb = Math.floor(Math.random() * cellTotal + 1)
-    if (!bombs.includes(bomb)) {
-        bombs.push(bomb)
-    }
-    console.log('numero generato', bomb, bombs )
-}
-
 // INIZIO GIOCO
-
-let playElement = document.querySelector('.play')
-
 
 playElement.addEventListener('click', function(){
     gridElement.innerHTML = ''
@@ -29,13 +20,40 @@ playElement.addEventListener('click', function(){
     gameOverText.style.display = 'none'
     pointcounter = 0
     gameOver = false
+    pointText.style.display = 'block'
+    bombs = []
+
+    
+    switch (difficultyElement.value) {
+        case '10': 
+            sidelength = 10
+        break;
+        case '9':
+            sidelength = 9
+        break;
+        case '7':
+                sidelength = 7
+        break;
+    }
+            
+    cellTotal = sidelength ** 2
+    // GENERAZIONE BOMBE
+        
+    while (bombs.length < 16) {
+        const bomb = Math.floor(Math.random() * cellTotal + 1)
+        if (!bombs.includes(bomb)) {
+            bombs.push(bomb)
+        }
+        console.log('numero generato', bomb, bombs)
+    }
+    
     
     for (let i = 0; i < cellTotal; i++) {
         let num = i + 1
         const cell = `<div class="cell" style="width: calc(100% / ${sidelength});">${num}</div>`
         gridElement.innerHTML += cell
     }
-
+    
     let cellElement = document.querySelectorAll('.cell')
     console.log(typeof cellElement, cellElement)
     
@@ -45,25 +63,8 @@ playElement.addEventListener('click', function(){
     playElement.innerHTML = 'RESTART'
     
     // FINE GIOCO
-
+            
 }) 
-
-
-
-
-// let cellElement = document.querySelectorAll('.cell')
-// console.log(typeof cellElement, cellElement)
-
-// for (let i = 0; i < cellElement.length; i++) {
-//     cellElement[i].addEventListener('click', cellClick)
-// }
-
-
-
-
-
-
-
 
 // FUNCTIONS
 
@@ -85,34 +86,14 @@ function cellClick(event) {
     if (gameOver === true) {
         for (let i = 0; i < cellElement.length; i++) {
             cellElement[i].removeEventListener('click', cellClick)
+            if (bombs.includes(parseInt(cellElement[i].innerHTML))) {
+                cellElement[i].classList.add('bomb')
+                cellElement[i].innerHTML = `<i class="fa-solid fa-bomb"></i>`
+            }
         }
         gameOverText.style.display = 'block'
     }
 }
-
-// function playClick() {
-
-    // gridElement.innerHTML = ''
-    
-
-    // for (let i = 0; i < cellNumber; i++) {
-    //     let num = i + 1
-    //     const cell = `<div class="cell" style="width: calc(100% / ${sidelength});">${num}</div>`
-    //     gridElement.innerHTML += cell
-    // }
-
-
-    // let cellElement = document.querySelectorAll('.cell')
-    // console.log(typeof cellElement, cellElement)
-    
-    // for (let i = 0; i < cellElement.length; i++) {
-    //     cellElement[i].addEventListener('click', cellClick)
-    // }
-    // playElement.innerHTML = 'RESTART'
-
-    // console.log(this)
-
-// }
 
 
 
