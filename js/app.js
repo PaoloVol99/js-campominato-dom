@@ -1,36 +1,32 @@
 
 const gridElement = document.querySelector('.grid')
 let sidelength = 10
-let cellNumber = sidelength ** 2
+let cellTotal = sidelength ** 2
 
+// GENERAZIONE BOMBE
+let bombs = []
 
-let playElement = document.querySelector('.play')
-let clicked = false
-
-playElement.addEventListener('click', playClick) 
-
-
-
-
-// FUNCTIONS
-
-function cellClick() {
-    console.log(this.innerHTML)
-    this.classList.add('clicked')
-    this.removeEventListener('click', cellClick)
+while (bombs.length < 16) {
+    const bomb = Math.floor(Math.random() * cellTotal + 1)
+    if (!bombs.includes(bomb)) {
+        bombs.push(bomb)
+    }
+    console.log('numero generato', bomb, bombs )
 }
 
-function playClick() {
-    if (clicked = true) {
-        gridElement.innerHTML = ''
-    }
+// INIZIO GIOCO
 
-    for (let i = 0; i < cellNumber; i++) {
+let playElement = document.querySelector('.play')
+
+
+playElement.addEventListener('click', function(){
+    gridElement.innerHTML = ''
+    
+    for (let i = 0; i < cellTotal; i++) {
         let num = i + 1
         const cell = `<div class="cell" style="width: calc(100% / ${sidelength});">${num}</div>`
         gridElement.innerHTML += cell
     }
-
 
     let cellElement = document.querySelectorAll('.cell')
     console.log(typeof cellElement, cellElement)
@@ -39,11 +35,61 @@ function playClick() {
         cellElement[i].addEventListener('click', cellClick)
     }
     playElement.innerHTML = 'RESTART'
-    clicked = true
 
-    console.log(this)
+}) 
 
+
+// let cellElement = document.querySelectorAll('.cell')
+// console.log(typeof cellElement, cellElement)
+
+// for (let i = 0; i < cellElement.length; i++) {
+//     cellElement[i].addEventListener('click', cellClick)
+// }
+
+
+
+
+
+
+
+
+// FUNCTIONS
+
+function cellClick() {
+    console.log(this.innerHTML)
+    let cellNumber = this.innerHTML
+    if (bombs.includes(parseInt(cellNumber))) {
+        this.classList.add('bomb')
+        this.innerHTML = `<i class="fa-solid fa-bomb"></i>`
+    } else {
+        this.classList.add('clicked')   
+    }
+    this.removeEventListener('click', cellClick)
 }
+
+// function playClick() {
+
+    // gridElement.innerHTML = ''
+    
+
+    // for (let i = 0; i < cellNumber; i++) {
+    //     let num = i + 1
+    //     const cell = `<div class="cell" style="width: calc(100% / ${sidelength});">${num}</div>`
+    //     gridElement.innerHTML += cell
+    // }
+
+
+    // let cellElement = document.querySelectorAll('.cell')
+    // console.log(typeof cellElement, cellElement)
+    
+    // for (let i = 0; i < cellElement.length; i++) {
+    //     cellElement[i].addEventListener('click', cellClick)
+    // }
+    // playElement.innerHTML = 'RESTART'
+
+    // console.log(this)
+
+// }
 
 
 

@@ -68,14 +68,79 @@ main {
 }
 
 .clicked {
-    background-color: orange;
+    background-color: green;
     color: white;
 }
 
 .clicked:hover {
-    background-color: orange;
+    background-color: green;
     transform: scale(100%);  
     border: 1px solid rgb(81, 81, 81);
     cursor: default;
 }
 
+.bomb {
+    background-color: red;
+    font-size: 30px;
+    color: black;
+    animation: zoom 1s;
+}
+
+@keyframes zoom {
+    
+    0% {
+        font-size: 2px;
+        color: black;
+    }
+
+    10% {
+        font-size: 55px;
+        color: white;
+    }
+
+    24% {
+        font-size: 30px;
+        color: black;
+    }
+
+    38% {
+        font-size: 45px;
+        color: white;
+    }
+
+    50% {
+        font-size: 30px;
+        color: black;
+    }
+
+    60% {
+        font-size: 40px;
+        color: white;
+    }
+
+    70% {
+        font-size: 30px;
+        color: black;
+    }
+
+    75% {
+        font-size: 35px;
+        color: black;
+    }
+
+    82% {
+        font-size: 30px;
+        color: black;
+    }
+
+    100% {
+        font-size: 30px;
+    }
+}
+
+.bomb:hover {
+    background-color: red;
+    transform: scale(100%);  
+    border: 1px solid rgb(81, 81, 81);
+    cursor: default;
+}
