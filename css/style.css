@@ -41,6 +41,10 @@ main {
     margin-top: 50px;
 }
 
+.play:hover {
+    background-color: rgb(229, 150, 2);
+}
+
 /* .display-none {
     display: none;
 } */
@@ -59,16 +63,19 @@ main {
 .cell:hover {
     background-color: rgb(205, 205, 205);
     transform: scale(105%);
+    border: 2px solid black;
+    cursor: pointer;
 }
 
 .clicked {
     background-color: orange;
     color: white;
-
 }
 
 .clicked:hover {
     background-color: orange;
-    transform: scale(100%);   
+    transform: scale(100%);  
+    border: 1px solid rgb(81, 81, 81);
+    cursor: default;
 }
 
