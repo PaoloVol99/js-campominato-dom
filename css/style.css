@@ -156,3 +156,16 @@ main {
     font-weight: 600;
     font-size: 50px;
 }
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#game-over {
+    display: none;
+    color: red;
+    font-weight: 900;
+    font-size: 60px;
+}
