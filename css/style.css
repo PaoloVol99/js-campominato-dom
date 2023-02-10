@@ -144,3 +144,15 @@ main {
     border: 1px solid rgb(81, 81, 81);
     cursor: default;
 }
+
+.point-text {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: darkgray;
+}
+
+.points {
+    color: green;
+    font-weight: 600;
+    font-size: 50px;
+}

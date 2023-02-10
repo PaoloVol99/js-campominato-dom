@@ -2,6 +2,9 @@
 const gridElement = document.querySelector('.grid')
 let sidelength = 10
 let cellTotal = sidelength ** 2
+let points = document.querySelector('.points')
+let pointcounter = 0
+
 
 // GENERAZIONE BOMBE
 let bombs = []
@@ -21,6 +24,8 @@ let playElement = document.querySelector('.play')
 
 playElement.addEventListener('click', function(){
     gridElement.innerHTML = ''
+    points.innerHTML = ''
+    pointcounter = 0
     
     for (let i = 0; i < cellTotal; i++) {
         let num = i + 1
@@ -55,14 +60,17 @@ playElement.addEventListener('click', function(){
 
 // FUNCTIONS
 
-function cellClick() {
+function cellClick(event) {
+    console.log(event)
     console.log(this.innerHTML)
     let cellNumber = this.innerHTML
     if (bombs.includes(parseInt(cellNumber))) {
         this.classList.add('bomb')
         this.innerHTML = `<i class="fa-solid fa-bomb"></i>`
     } else {
-        this.classList.add('clicked')   
+        pointcounter++
+        this.classList.add('clicked')
+        points.innerHTML = 100 * pointcounter
     }
     this.removeEventListener('click', cellClick)
 }
