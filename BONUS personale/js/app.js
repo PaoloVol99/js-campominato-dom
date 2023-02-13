@@ -118,106 +118,393 @@ function cellClick(event) {
         console.log(firstRow, firstColumn, lastRow, lastColumn)
         console.log('sidelength:', sidelength)
 
+        let bombsAround = 0
+
         if  ((!firstRow.includes(number) &&
             !lastRow.includes(number) &&
             !firstColumn.includes(number) &&
-            !lastColumn.includes(number)) &&
-            (bombs.includes(number - (sidelength - 1)) ||
-            bombs.includes(number - (sidelength)) ||
-            bombs.includes(number - (sidelength + 1)) ||
-            bombs.includes(number - 1) ||
-            bombs.includes(number + 1) ||
-            bombs.includes(number + (sidelength - 1)) ||
-            bombs.includes(number + (sidelength)) ||
-            bombs.includes(number + (sidelength + 1)))) {
-                console.log(number)
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            !lastColumn.includes(number))) {
+            if (bombs.includes(number - (sidelength - 1))) {
+                bombsAround++
+            }    
+            if (bombs.includes(number - (sidelength))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - (sidelength + 1))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - 1)) {
+                bombsAround++
+            }
+            if (bombs.includes(number + 1)){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength - 1))){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength))){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength + 1))){
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black'
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
+            // console.log(number)
+            // this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            // this.style.backgroundColor = 'yellow'
+            this.style.color = 'black'
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
+                this.style.backgroundColor = 'yellow'
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
+            // this.style.color = 'black' 
         } else if ((firstRow.includes(number) &&
             !lastRow.includes(number) &&
             !firstColumn.includes(number) &&
-            !lastColumn.includes(number)) &&
-            (bombs.includes(number - 1) ||
-            bombs.includes(number + 1) ||
-            bombs.includes(number + (sidelength - 1)) ||
-            bombs.includes(number + (sidelength)) ||
-            bombs.includes(number + (sidelength + 1)))) {
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            !lastColumn.includes(number))) {
+            if (bombs.includes(number - 1)) {
+                bombsAround++
+            }
+            if (bombs.includes(number + 1)){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength - 1))){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength))){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength + 1))){
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black'
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
         } else if ((!firstRow.includes(number) &&
             lastRow.includes(number) &&
             !firstColumn.includes(number) &&
-            !lastColumn.includes(number)) &&
-            (bombs.includes(number - (sidelength - 1)) ||
-            bombs.includes(number - (sidelength)) ||
-            bombs.includes(number - (sidelength + 1)) ||
-            bombs.includes(number - 1) ||
-            bombs.includes(number + 1))) {  
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            !lastColumn.includes(number))){
+            if (bombs.includes(number - (sidelength - 1))) {
+                bombsAround++
+            } 
+            if (bombs.includes(number - (sidelength))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - (sidelength + 1))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - 1)) {
+                bombsAround++
+            }
+            if (bombs.includes(number + 1)){
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black'
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
+
         } else if ((!firstRow.includes(number) &&
             !lastRow.includes(number) &&
             firstColumn.includes(number) &&
-            !lastColumn.includes(number)) &&
-            (bombs.includes(number - (sidelength)) ||
-            bombs.includes(number - (sidelength - 1)) ||
-            bombs.includes(number + 1) ||
-            bombs.includes(number + (sidelength)) ||
-            bombs.includes(number + (sidelength + 1)))) {
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            !lastColumn.includes(number))) {
+            if (bombs.includes(number - (sidelength))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - (sidelength - 1))) {
+                bombsAround++
+            }
+            if (bombs.includes(number + 1)){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength))){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength + 1))){
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black'
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
+            
         } else if ((!firstRow.includes(number) &&
             !lastRow.includes(number) &&
             !firstColumn.includes(number) &&
-            lastColumn.includes(number)) &&
-            (bombs.includes(number - (sidelength + 1)) ||
-            bombs.includes(number - (sidelength)) ||
-            bombs.includes(number - 1) ||
-            bombs.includes(number + (sidelength - 1)) ||
-            bombs.includes(number + (sidelength)))) {
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            lastColumn.includes(number))){
+            if (bombs.includes(number - (sidelength + 1))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - (sidelength))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - 1)) {
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength - 1))){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength))){
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black' 
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
         } else if ((firstRow.includes(number) &&
-            firstColumn.includes(number)) &&
-            (bombs.includes(number + 1) ||
-            bombs.includes(number + (sidelength)) ||
-            bombs.includes(number + (sidelength + 1)))) {
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            firstColumn.includes(number))){
+            if (bombs.includes(number + 1)){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength))){
+                bombsAround++
+            }
+            if (bombs.includes(number + (sidelength + 1))){
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black' 
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
         } else if ((lastRow.includes(number) &&
-            lastColumn.includes(number)) &&
-            (bombs.includes(number - 1) ||
-            bombs.includes(number - (sidelength)) ||
-            bombs.includes(number - (sidelength + 1)))) {
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            lastColumn.includes(number))){
+            if (bombs.includes(number - 1)) {
+                bombsAround++
+            }
+            if (bombs.includes(number - (sidelength))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - (sidelength + 1))) {
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black' 
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
         } else if ((firstRow.includes(number) &&
-            lastColumn.includes(number)) &&
-            (bombs.includes(number - 1) ||
-            bombs.includes(number + (sidelength - 1)) ||
-            bombs.includes(number + (sidelength)))) {
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            lastColumn.includes(number))){
+            if (bombs.includes(number - 1)) {
+                bombsAround++
+            }
+            bombs.includes(number + (sidelength - 1))
+            if (bombs.includes(number + (sidelength))){
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black' 
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
         } else if ((lastRow.includes(number) &&
-            firstColumn.includes(number)) &&
-            (bombs.includes(number - (sidelength)) ||
-            bombs.includes(number - (sidelength - 1)) ||
-            bombs.includes(number + 1))) {
-                this.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`
+            firstColumn.includes(number))){
+            if (bombs.includes(number - (sidelength))) {
+                bombsAround++
+            }
+            if (bombs.includes(number - (sidelength - 1))) {
+                bombsAround++
+            }
+            if (bombs.includes(number + 1)){
+                bombsAround++
+            }
+            this.innerHTML = bombsAround
+            // this.style.backgroundColor = 'yellow'
+            // this.style.color = 'black' 
+            if (bombsAround === 0) {
+                this.style.backgroundColor = 'green'
+                this.style.color = 'white'
+            } else if (bombsAround === 1) {
                 this.style.backgroundColor = 'yellow'
-                this.style.color = 'black' 
-        } else {
-            this.innerHTML = `<i class="fa-solid fa-check"></i>`
-            this.style.backgroundColor = 'green'        
+                this.style.color = 'black'
+            } else if (bombsAround === 2) {
+                this.style.backgroundColor = 'darkorange'
+                this.style.color = 'white'
+            } else if (bombsAround === 3) {
+                this.style.backgroundColor = 'brown'
+                this.style.color = 'white'
+            } else if (bombsAround === 4) {
+                this.style.backgroundColor = 'darkred'
+                this.style.color = 'white'
+            }
+            else if (bombsAround > 4) {
+                this.style.backgroundColor = 'black'
+                this.style.color = 'white'
+            }
         }
+        // } else {
+        //     this.innerHTML = `<i class="fa-solid fa-check"></i>`
+        //     this.style.backgroundColor = 'green'        
+        // }
     }
     this.removeEventListener('click', cellClick)
     this.removeEventListener('contextmenu', cellRightClick)
@@ -229,10 +516,10 @@ function cellClick(event) {
             if (bombs.includes(parseInt(cellElement[i].getAttribute("num")))) {
                 cellElement[i].classList.add('bomb')
                 cellElement[i].innerHTML = `<i class="fa-solid fa-bomb"></i>`
-                if (cellElement[i].style.backgroundColor === 'orange') {
+                if (cellElement[i].style.color === 'red') {
                     points.innerHTML = parseInt(points.innerHTML) + 500
                     cellElement[i].style.color = 'green'
-                    cellElement[i].style.backgroundColor = 'orange'
+                    cellElement[i].style.backgroundColor = 'lightgrey'
                 } 
                 // } else {
                 //     if (cellElement[i].style.backgroundColor === 'orange') {
@@ -240,12 +527,12 @@ function cellClick(event) {
                 //         points.innerHTML = parseInt(points.innerHTML) - 100
                 //     }
             } else {
-                    if (cellElement[i].style.backgroundColor === 'orange') {
-                        cellElement[i].style.backgroundColor = 'red'
-                        cellElement[i].innerHTML = `<i class="fa-solid fa-xmark"></i>`
-                        cellElement[i].style.color = 'white'
-                        points.innerHTML = parseInt(points.innerHTML) - 500
-                    }
+                if (cellElement[i].style.color === 'red') {
+                    cellElement[i].style.backgroundColor = 'lightgray'
+                    cellElement[i].innerHTML = `<i class="fa-solid fa-xmark"></i>`
+                    cellElement[i].style.color = 'red'
+                    points.innerHTML = parseInt(points.innerHTML) - 500
+                }
             }
         gameOverText.style.display = 'block'
         }
@@ -255,7 +542,7 @@ function cellClick(event) {
 
 function cellRightClick(event) {
     event.preventDefault()
-    this.innerHTML = `<i class="fa-solid fa-question"></i>`
-    this.style.color = 'white'
-    this.style.backgroundColor = 'orange'
+    this.innerHTML = `<i class="fa-solid fa-flag"></i>`
+    this.style.color = 'red'
+    this.style.backgroundColor = 'lightgrey'
 }
